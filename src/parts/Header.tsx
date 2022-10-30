@@ -25,11 +25,17 @@ import AuthButtons from "../components/AuthButtons";
 const HeaderRoot = styled(Grid)(({ theme }) => ({
   width: "100%",
   flexWrap: "nowrap",
-  height: "126px",
   alignItems: "center",
   margin: "0 auto",
-
+  height: "70px",
+  "@media only screen and (min-width:900px)": {
+    height:"80px"
+  },
+  "@media only screen and (min-width:1200px)": {
+    height:"90px"
+  },
   "@media only screen and (min-width:1920px)": {
+    height: "126px",
     width: "1672px",
     flexWrap: "nowrap",
   },
@@ -60,14 +66,21 @@ const Header: FC<HeaderProps> = function ({ isDrawerOpen, openDrawer }) {
         <MenuIcon />
       </IconButton>
       <Box
+        className="header_brand"
         component={"img"}
-        sx={{ width: "152px", height: "44px", objectFit: "cover" }}
+        sx={{
+          width: "152px", height: "44px", objectFit: "cover",
+          "@media only screen and (max-width:500px)": {
+            width: "80px",
+            height:"23px"
+          }
+        }}
         src={brand2}></Box>
       <Switch
         sx={{
           "&": {
-            width: "39px",
-            height: "39px",
+            width: "30px",
+            height: "30px",
             marginRight: "14px",
             background: "#1A2331",
             borderRadius: "30px",
@@ -82,6 +95,10 @@ const Header: FC<HeaderProps> = function ({ isDrawerOpen, openDrawer }) {
             transform: "translate(0,0)",
             color: "black",
           },
+          "@media only screen and (min-width:900px)": {
+            width: "40px",
+            height:"40px"
+          }
         }}
         onChange={(e,check)=>dispatch(setThemeMode({mode:check?"light" : "dark"}))}
         icon={<LightModeIcon sx={{ color: "#EAC016" }} />}

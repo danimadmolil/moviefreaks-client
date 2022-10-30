@@ -39,8 +39,8 @@ const GlobalSearchRoot: MyT = styled(Paper)(() => ({
   height: "53px",
   borderRadius: "14px",
   background: "#1A2331",
+  
   "@media only screen and (max-width:1240px)": {
-    marginRight: "4px",
     width: "200px",
   },
   "@media only screen and (max-width:1144px)": {
@@ -52,6 +52,10 @@ const GlobalSearchRoot: MyT = styled(Paper)(() => ({
     flexShrink: 0,
     overflow: "hidden",
   },
+   "@media only screen and (max-width:500px)": {
+            width: "30px",
+            height:"30px"
+          }
 })) as typeof Paper;
 const GlobalSearch: FC = function () {
   const [open, setOpen] = useState(false);
@@ -93,7 +97,7 @@ const GlobalSearch: FC = function () {
             flexWrap: "nowrap",
             marginRight: "109px",
             fontSize: "20px",
-            width: "298px",
+            width: "80%",
             height: "53px",
             borderRadius: "14px",
             background: "#1A2331",
