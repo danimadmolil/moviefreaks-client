@@ -12,24 +12,29 @@ import {
   ListItemIcon,
   ListItemText,
   MenuItem,
+  Paper,
 } from "@mui//material";
-import { Login, AppRegistrationRounded,SignLanguage } from "@mui/icons-material";
+import {
+  Login,
+  AppRegistrationRounded,
+  SignLanguage,
+} from "@mui/icons-material";
 import TouchRipple from "@mui/material/ButtonBase/TouchRipple";
 const AuthButtonsMobileMenuItems = (
-    <>
-    <MenuItem >
-    <ListItemIcon>
-      <Login />
-    </ListItemIcon>
-    <ListItemText>{"ورود"}</ListItemText>
-  </MenuItem>
-   <MenuItem>
-    <ListItemIcon>
-      <AppRegistrationRounded />
-    </ListItemIcon>
-    <ListItemText>{"ثبت نام"}</ListItemText>
-  </MenuItem>
-  </>
+  <Paper>
+    <MenuItem>
+      <ListItemIcon>
+        <Login />
+      </ListItemIcon>
+      <ListItemText>{"ورود"}</ListItemText>
+    </MenuItem>
+    <MenuItem>
+      <ListItemIcon>
+        <AppRegistrationRounded />
+      </ListItemIcon>
+      <ListItemText>{"ثبت نام"}</ListItemText>
+    </MenuItem>
+  </Paper>
 );
 const AuthButtons: FC = () => {
   const theme = useTheme();
@@ -44,11 +49,13 @@ const AuthButtons: FC = () => {
   }
   return downLg ? (
     <>
-      <IconButton  onClick={openMenu} ref={avatarRef}>
-        <Avatar  ><SignLanguage/></Avatar>
+      <IconButton onClick={openMenu} ref={avatarRef}>
+        <Avatar>
+          <SignLanguage />
+        </Avatar>
       </IconButton>
-          <Menu onClose={closeMenu} anchorEl={ref} open={ref ? true : false}>
-              {AuthButtonsMobileMenuItems}
+      <Menu onClose={closeMenu} anchorEl={ref} open={ref ? true : false}>
+        {AuthButtonsMobileMenuItems}
       </Menu>
     </>
   ) : (

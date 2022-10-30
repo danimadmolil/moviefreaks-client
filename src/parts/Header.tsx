@@ -22,26 +22,26 @@ import HeaderMenuConnector from "../components/HeaderMenuConnector";
 import { useDispatch } from "react-redux";
 import { setThemeMode } from "../store/slice/theme";
 import AuthButtons from "../components/AuthButtons";
-const HeaderRoot = styled(Grid)(({ theme }) => ({
-  width: "100%",
-  flexWrap: "nowrap",
-  alignItems: "center",
-  margin: "0 auto",
-  height: "70px",
-  "@media only screen and (min-width:900px)": {
-    height:"80px"
-  },
-  "@media only screen and (min-width:1200px)": {
-    height:"90px"
-  },
-  "@media only screen and (min-width:1920px)": {
-    height: "126px",
-    width: "1672px",
+const HeaderRoot = styled(Grid, { shouldForwardProp: () => true })(
+  ({ theme }) => ({
+    width: "100%",
     flexWrap: "nowrap",
-  },
-}));
-
-
+    alignItems: "center",
+    margin: "0 auto",
+    height: "70px",
+    "@media only screen and (min-width:900px)": {
+      height: "80px",
+    },
+    "@media only screen and (min-width:1200px)": {
+      height: "90px",
+    },
+    "@media only screen and (min-width:1920px)": {
+      height: "126px",
+      width: "1672px",
+      flexWrap: "nowrap",
+    },
+  })
+);
 
 type HeaderProps = {
   isDrawerOpen?: boolean;
@@ -49,8 +49,8 @@ type HeaderProps = {
 };
 
 const Header: FC<HeaderProps> = function ({ isDrawerOpen, openDrawer }) {
-    const theme = useTheme();
-    const dispatch = useDispatch()
+  const theme = useTheme();
+  const dispatch = useDispatch();
   return (
     <HeaderRoot container dir="rtl">
       <IconButton
@@ -69,11 +69,13 @@ const Header: FC<HeaderProps> = function ({ isDrawerOpen, openDrawer }) {
         className="header_brand"
         component={"img"}
         sx={{
-          width: "152px", height: "44px", objectFit: "cover",
+          width: "152px",
+          height: "44px",
+          objectFit: "cover",
           "@media only screen and (max-width:500px)": {
             width: "80px",
-            height:"23px"
-          }
+            height: "23px",
+          },
         }}
         src={brand2}></Box>
       <Switch
@@ -97,10 +99,12 @@ const Header: FC<HeaderProps> = function ({ isDrawerOpen, openDrawer }) {
           },
           "@media only screen and (min-width:900px)": {
             width: "40px",
-            height:"40px"
-          }
+            height: "40px",
+          },
         }}
-        onChange={(e,check)=>dispatch(setThemeMode({mode:check?"light" : "dark"}))}
+        onChange={(e, check) =>
+          dispatch(setThemeMode({ mode: check ? "dark" : "light" }))
+        }
         icon={<LightModeIcon sx={{ color: "#EAC016" }} />}
         checkedIcon={<DarkModeIcon />}
       />

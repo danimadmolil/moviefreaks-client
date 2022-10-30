@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Grid, Typography, IconButton,useMediaQuery } from "@mui/material";
+import { Grid, Typography, IconButton, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 type MenuItem = {
@@ -11,15 +11,14 @@ const menuItems: MenuItem[] | [] = [
   { id: 1, title: "خانه" },
   { id: 2, title: "فیلمهای ویژه" },
   { id: 3, title: "زیرنویس اختصاصی" },
-  { id: 1, title: "باکس افیس" },
-  { id: 1, title: "اشتراک ویژه" },
+  { id: 4, title: "باکس افیس" },
+  { id: 5, title: "اشتراک ویژه" },
 ];
 
 const HeaderMenu: FC<{ isDrawerOpen: boolean; closeDrawer: () => void }> =
   function HeaderMenu({ closeDrawer, isDrawerOpen }) {
-    
     const theme = useTheme();
-    const biggerThanMd = useMediaQuery(theme.breakpoints.up('md'))
+    const biggerThanMd = useMediaQuery(theme.breakpoints.up("md"));
     return (
       <>
         <Grid
@@ -33,8 +32,11 @@ const HeaderMenu: FC<{ isDrawerOpen: boolean; closeDrawer: () => void }> =
             position: "fixed",
             top: 0,
             left: "100%",
-            transform: !biggerThanMd && isDrawerOpen ? "translateX(-100%)" : "translateX(+100%)",
-            background: "#131720",
+            transform:
+              !biggerThanMd && isDrawerOpen
+                ? "translateX(-100%)"
+                : "translateX(+100%)",
+
             fontSize: "12px",
             [theme.breakpoints.up("md")]: {
               padding: "0px",
