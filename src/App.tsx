@@ -1,23 +1,32 @@
 import React, { FC } from "react";
 import {
-  Container,
   Box,
   CssBaseline,
   styled,
   ThemeProvider,
+  Grid,
+  useTheme,
 } from "@mui/material";
-import Header from "./parts/Header";
+import ExpandCircleDownIcon from "@mui/icons-material/ExpandCircleDown";
 import { useSelector } from "react-redux";
-
 import HeaderConnector from "./parts/HeaderConnector";
 import createTheme from "./createTheme";
+import FilterMenu from "./components/FilterMenu";
+import TopMovieSlider from "./components/TopMovieSlider";
+
 interface AppProps {}
 const Root = styled(Box)(() => ({
   maxWidth: "1920px",
   width: "100%",
   margin: "0 auto",
+  padding: "0 24px",
+  "@media only screen and (min-width:1919px)": {
+    padding: "0 84px",
+  },
 }));
-
+const LeftArrowCircle = styled(ExpandCircleDownIcon)({
+  transform: "rotate(90deg)",
+});
 type ThemeModeType = "dark" | "light";
 let App: FC<AppProps> = function App() {
   const themeMode: ThemeModeType = useSelector(
@@ -25,11 +34,34 @@ let App: FC<AppProps> = function App() {
       return state.theme.mode;
     }
   );
+  const theme = useTheme();
+
   return (
     <ThemeProvider theme={createTheme(themeMode)}>
       <Root>
         <CssBaseline />
         <HeaderConnector />
+        <FilterMenu />
+        <TopMovieSlider />
+        {/* <AdvanceFilter /> */}
+        <Grid
+          container
+          gap="75px"
+          dir="rtl"
+          sx={{ mt: "83px", padding: "0 42px", height: "auto", width: "100%" }}
+          className="main_content">
+          <Grid item xl={8.1}>
+           
+          </Grid>
+        
+          <Grid
+            item
+            container
+            sx={{ height: "800px", paddingTop: "5px" }}
+            xl={3}>
+     
+          </Grid>
+        </Grid>
       </Root>
     </ThemeProvider>
   );
