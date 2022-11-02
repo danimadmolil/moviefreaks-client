@@ -43,24 +43,34 @@ let App: FC<AppProps> = function App() {
         <HeaderConnector />
         <FilterMenu />
         <TopMovieSlider />
-        {/* <AdvanceFilter /> */}
+        {/** content container*/}
         <Grid
           container
           gap="75px"
           dir="rtl"
           sx={{ mt: "83px", padding: "0 42px", height: "auto", width: "100%" }}
           className="main_content">
-          <Grid item xl={8.1}>
-           
-          </Grid>
-        
+          {/**main content */}
+          <Grid
+            item
+            sm={12}
+            md={12}
+            lg={8}
+            xl={8.1}
+            sx={{ outline: "2px solid blue" }}></Grid>
+          {/**side bar */}
           <Grid
             item
             container
-            sx={{ height: "800px", paddingTop: "5px" }}
-            xl={3}>
-     
-          </Grid>
+            sx={{
+              height: "800px",
+              paddingTop: "5px",
+              outline: "2px solid red",
+            }}
+            sm={12}
+            md={12}
+            lg={3}
+            xl={3}></Grid>
         </Grid>
       </Root>
     </ThemeProvider>
