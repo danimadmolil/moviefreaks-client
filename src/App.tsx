@@ -14,6 +14,7 @@ import createTheme from "./createTheme";
 import FilterMenu from "./components/FilterMenu";
 import TopMovieSlider from "./components/TopMovieSlider";
 import SerialSchedule from "./components/SerialSchedule";
+import AdvanceFilter from "./components/AdvanceFilter";
 
 interface AppProps {}
 const Root = styled(Box)(({ theme }) => ({
@@ -61,6 +62,7 @@ let App: FC<AppProps> = function App() {
           sx={{ mt: "83px", height: "auto", width: "100%" }}
           className="main_content">
           {/**main content */}
+          <AdvanceFilter />
           <Grid
             item
             xs={12}
@@ -69,7 +71,6 @@ let App: FC<AppProps> = function App() {
             lg={8}
             xl={8.1}
             sx={{
-              outline: "2px solid blue",
               [theme.breakpoints.down("sm")]: {
                 width: "100%",
               },
@@ -83,7 +84,6 @@ let App: FC<AppProps> = function App() {
             sx={{
               height: "800px",
               paddingTop: "5px",
-              outline: "2px solid red",
             }}
             sm={12}
             md={12}
