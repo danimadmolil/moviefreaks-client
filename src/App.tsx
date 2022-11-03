@@ -13,14 +13,24 @@ import HeaderConnector from "./parts/HeaderConnector";
 import createTheme from "./createTheme";
 import FilterMenu from "./components/FilterMenu";
 import TopMovieSlider from "./components/TopMovieSlider";
+import SerialSchedule from "./components/SerialSchedule";
 
 interface AppProps {}
-const Root = styled(Box)(() => ({
+const Root = styled(Box)(({ theme }) => ({
   maxWidth: "1920px",
   width: "100%",
   margin: "0 auto",
-  padding: "0 24px",
-  "@media only screen and (min-width:1919px)": {
+  padding: "0 0px",
+  [theme.breakpoints.up("sm")]: {
+    padding: "0 24px",
+  },
+  [theme.breakpoints.up("md")]: {
+    padding: "0 44px",
+  },
+  [theme.breakpoints.up("lg")]: {
+    padding: "0 64px",
+  },
+  [theme.breakpoints.up("xl")]: {
     padding: "0 84px",
   },
 }));
@@ -48,16 +58,24 @@ let App: FC<AppProps> = function App() {
           container
           gap="75px"
           dir="rtl"
-          sx={{ mt: "83px", padding: "0 42px", height: "auto", width: "100%" }}
+          sx={{ mt: "83px", height: "auto", width: "100%" }}
           className="main_content">
           {/**main content */}
           <Grid
             item
+            xs={12}
             sm={12}
             md={12}
             lg={8}
             xl={8.1}
-            sx={{ outline: "2px solid blue" }}></Grid>
+            sx={{
+              outline: "2px solid blue",
+              [theme.breakpoints.down("sm")]: {
+                width: "100%",
+              },
+            }}>
+            <SerialSchedule />
+          </Grid>
           {/**side bar */}
           <Grid
             item
@@ -69,8 +87,8 @@ let App: FC<AppProps> = function App() {
             }}
             sm={12}
             md={12}
-            lg={3}
-            xl={3}></Grid>
+            lg={3.4}
+            xl={3.35}></Grid>
         </Grid>
       </Root>
     </ThemeProvider>
